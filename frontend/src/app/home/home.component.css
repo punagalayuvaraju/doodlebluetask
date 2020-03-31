@@ -1,0 +1,20 @@
+.position-fixed{
+    position: fixed;
+    background-color: yellow;
+  }
+  .dvwdth{
+    width:100%;
+  }
+  .icnend{
+    float:right;
+    cursor: pointer;
+  }
+  .auditcss{
+    padding-top: 31%;
+    display: flex;
+    justify-content: center;
+  }
+  .clrbtn{
+    color: yellow;
+    background-color: black;
+  }

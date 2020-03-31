@@ -1,0 +1,10 @@
+<mat-toolbar  class="position-fixed">
+<div class="dvwdth">
+    <span>Dashboard >> {{userinfo?.firstname}}</span>
+    <span (click)="logout($event)" class="icnend"><mat-icon>input</mat-icon></span>
+</div>
+</mat-toolbar>
+
+<div class="auditcss" *ngIf="userinfo?.userrole === 'audit'">
+<button class="clrbtn" small mat-raised-button type="button" (click)="gotoAudit()">view Audit</button>
+</div>
