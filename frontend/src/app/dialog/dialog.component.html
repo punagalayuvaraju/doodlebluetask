@@ -1,0 +1,26 @@
+<ng-container *ngIf="dialogdata?.type === 'create'">
+        <form [formGroup]="creationForm" (ngSubmit)="creationrecord()">
+            <div class="hyhd">
+                <button [mat-dialog-close]="'Yes'"  mat-icon-button type="button"><mat-icon>highlight_off</mat-icon></button>
+            </div>
+             <div>  
+            <mat-form-field class="widthformfield">
+                <input type="text" matInput placeholder="Task Name" formControlName="Tname" (keydown)="_handleKeydown($event)">
+               <mat-error *ngIf="formControls?.Tname?.errors">
+                 <span *ngIf="formControls?.Tname?.errors?.required">
+                 Task Name is Required !!!
+                 </span>
+                 <span *ngIf="formControls?.Tname?.errors?.pattern">
+                   Invalid Task Name !!!
+                 </span>
+               </mat-error>
+              </mat-form-field>
+            </div>
+        
+        
+            <div class="cnttr">
+             <button mat-raised-button class="btnclr" type="submit">Submit</button>
+            </div>
+        </form>      
+        
+</ng-container>

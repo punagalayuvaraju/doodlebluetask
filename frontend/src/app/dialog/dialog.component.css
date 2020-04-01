@@ -1,0 +1,13 @@
+.btnclr{
+    background-color: #0f81c5;
+    color: white;
+  }
+  .cnttr{
+  display: flex;
+  justify-content: center;
+  }
+  
+  .hyhd{
+    display: flex;
+    float: right;
+  }

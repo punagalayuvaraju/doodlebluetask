@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from '../_services/user.service';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { Router, ActivatedRoute } from '@angular/router';
+import {FormGroup,FormBuilder, Validators} from '@angular/forms'
+import { MatDialog } from '@angular/material/dialog';
+import { DialogComponent } from '../dialog/dialog.component';
 
 @Component({
   selector: 'app-home',
@@ -10,7 +13,10 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class HomeComponent implements OnInit {
   userinfo:any;
-  constructor(public userservc:UserService,private spinner:NgxSpinnerService,private router:Router) { }
+  firstFormGroup: FormGroup;
+  secondFormGroup: FormGroup;
+  thirdFormGroup: FormGroup;
+  constructor(public userservc:UserService,public dialog : MatDialog,private spinner:NgxSpinnerService,private router:Router) { }
 
   ngOnInit() {
     this.userinfo = null;
@@ -19,17 +25,19 @@ export class HomeComponent implements OnInit {
 
   logout(event) {
     event.stopPropagation();
-    this.spinner.show();
-   this.userservc.logoutupdate().subscribe((data:any) => {
-     this.userservc.logout();
-     this.spinner.hide();
-   }, err => {
-    this.spinner.hide();
-   })
+    this.userservc.logout();
   }
 
 
   gotoAudit() {
-    this.router.navigate(['audit'])
+    let dialogRef = this.dialog.open(DialogComponent, {
+      height:'auto',
+      width:'auto',
+      data:{type:'create'},
+      disableClose:true
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(result);
+    });
   }
 }

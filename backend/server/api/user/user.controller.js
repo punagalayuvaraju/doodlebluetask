@@ -24,15 +24,22 @@ exports.index = function(req, res) {
  * Creates a new user
  */
 exports.create = function (req, res, next) {
-  var newUser = new User(req.body);
-  newUser.provider = 'local';
-  newUser.role = 'user';
-  newUser.save(function(err, user) {
-    if (err) return validationError(res, err);
-    var token = jwt.sign({_id: user._id }, config.secrets.session, { expiresInMinutes: 60*5 });
-    res.json({ token: token });
+  console.log(req.body)
+  const user = new User(req.body);
+  user.save(function(err,response) {
+    if(err) {
+      console.log(err);
+      if (err && err.code === 11000) {
+        res.status(400).json({message: 'The specified Username is already in use !!!'})
+       } else {
+         res.status(400).send({message:'Something Went Wrong !!!'});
+       }  
+    } else {
+      var token = jwt.sign({_id: response._id }, config.secrets.session, { expiresInMinutes: 60*5 });
+      res.status(200).json({ token: token ,userrole: response.role,firstname:response.firstname});
+    }
   });
-};
+  };
 
 /**
  * Get a single user

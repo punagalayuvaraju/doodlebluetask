@@ -6,15 +6,19 @@ var crypto = require('crypto');
 var authTypes = ['github', 'twitter', 'facebook', 'google'];
 
 var UserSchema = new Schema({
-  name: String,
-  email: { type: String, lowercase: true },
-  role: {
-    type: String,
-    default: 'user'
-  },
+  firstname: String,
+  lastname: String,
+  username:{type:String,required:true,index: {unique: true}},
+  status: { type: Boolean,enum: [true, false] ,default: true},
+  userIP: String,
+  role: {type: String,default: 'normaluser'},
+  lastLoggedIn:{type:Date},
+  lastLoggedOut:{type:Date},
   hashedPassword: String,
   provider: String,
   salt: String,
+  created_at: { type: Date, required: true, default: Date.now },
+  updated_at: { type: Date},
   facebook: {},
   twitter: {},
   google: {},
@@ -59,13 +63,6 @@ UserSchema
  * Validations
  */
 
-// Validate empty email
-UserSchema
-  .path('email')
-  .validate(function(email) {
-    if (authTypes.indexOf(this.provider) !== -1) return true;
-    return email.length;
-  }, 'Email cannot be blank');
 
 // Validate empty password
 UserSchema
@@ -75,20 +72,6 @@ UserSchema
     return hashedPassword.length;
   }, 'Password cannot be blank');
 
-// Validate email is not taken
-UserSchema
-  .path('email')
-  .validate(function(value, respond) {
-    var self = this;
-    this.constructor.findOne({email: value}, function(err, user) {
-      if(err) throw err;
-      if(user) {
-        if(self.id === user.id) return respond(true);
-        return respond(false);
-      }
-      respond(true);
-    });
-}, 'The specified email address is already in use.');
 
 var validatePresenceOf = function(value) {
   return value && value.length;
@@ -142,7 +125,7 @@ UserSchema.methods = {
   encryptPassword: function(password) {
     if (!password || !this.salt) return '';
     var salt = new Buffer(this.salt, 'base64');
-    return crypto.pbkdf2Sync(password, salt, 10000, 64).toString('base64');
+    return crypto.pbkdf2Sync(password, salt, 10000, 64,'sha512').toString('base64');
   }
 };
 

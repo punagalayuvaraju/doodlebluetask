@@ -32,9 +32,7 @@ export class UserService {
         this.router.navigate(['']);
     }
     
-    logoutupdate() {
-      return this.http.post(this.serverurl + '/api/users/lastlogout',null);
-    }
+  
 
     createUser(user) {
     return this.http.post(this.serverurl + '/api/users/', user);

@@ -14,7 +14,7 @@ import { AuthGuardService as AuthGuard } from './_helpers/auth.guard';
 import { FrontEndConfig } from './frontendConfig';
 import { ToastrModule } from 'ngx-toastr';
 import { NgxSpinnerModule } from 'ngx-spinner';
-
+import {MatStepperModule} from '@angular/material/stepper'
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatFormFieldModule } from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input' ;
@@ -22,14 +22,14 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatIconModule} from '@angular/material/icon';
 import { HomeComponent } from './home/home.component';
-import { AuditComponent } from './audit/audit.component';
 import { LoginComponent } from './login/login.component';
-import {FilterPipe} from './filter.pipe'
+import {FilterPipe} from './filter.pipe';
+import { DialogComponent } from './dialog/dialog.component'
+import {MatDialogModule} from '@angular/material/dialog'
 
 const routes : Routes = [
   {path:'',component :LoginComponent},
   {path:'home',component :HomeComponent,canActivate:[AuthGuard]},
-  {path:'audit',component:AuditComponent,canActivate:[AuthGuard]},
   {path:'signup',component:SignupComponent}
 
 ]
@@ -40,9 +40,9 @@ const routes : Routes = [
     AppComponent,
     SignupComponent,
     HomeComponent,
-    AuditComponent,
     LoginComponent,
-    FilterPipe
+    FilterPipe,
+    DialogComponent
   ],
   imports: [
     BrowserModule,
@@ -55,9 +55,11 @@ const routes : Routes = [
     FormsModule,
     MatIconModule,
     MatToolbarModule,
+    MatDialogModule,
     NgxSpinnerModule,
     MatButtonModule,
     MatTooltipModule,
+    MatStepperModule,
     ToastrModule.forRoot({
       timeOut: 4000,
       positionClass: 'toast-bottom-right'
@@ -71,6 +73,9 @@ const routes : Routes = [
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA],
+  entryComponents: [
+    DialogComponent,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

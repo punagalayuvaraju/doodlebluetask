@@ -1,16 +1,17 @@
 .registerbtn{
-    color: black;
-    background-color:yellow;
-    }
+    background-color: #0f81c5;
+    color: white;
+}
     .loginbtn{
-        color: yellow;
-        background-color:black; 
+        background-color: #040949;
+        color: white;
     }
+    
     .wholeForm{
         display: flex;
         width: 100%;
-        height:100%
-        }
+        height: calc(100% - 80px);
+            }
     
         .section1{
          width:50%
@@ -24,12 +25,14 @@
             display: flex;
             justify-content: center;
             padding-top: 30px;
+            background-color: #0f81c5;
+            color: white;
         }
     
        
     
         .formpadding{
-            padding-top:18%;
+            padding-top:28%;
         } 
     
         .widthformfield{

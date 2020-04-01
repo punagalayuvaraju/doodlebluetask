@@ -29,7 +29,7 @@ var all = {
 
   // Secret for session, you will want to change this and make it an environment variable
   secrets: {
-    session: 'backend-secret'
+    session: 'aibackendcontent-secret'
   },
 
   // List of user roles
@@ -38,9 +38,7 @@ var all = {
   // MongoDB connection options
   mongo: {
     options: {
-      db: {
-        safe: true
-      }
+      useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true
     }
   },
 

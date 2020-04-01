@@ -1,6 +1,7 @@
 .position-fixed{
     position: fixed;
-    background-color: yellow;
+    background-color: #0f81c5;
+    color: white;
   }
   .dvwdth{
     width:100%;
@@ -10,11 +11,74 @@
     cursor: pointer;
   }
   .auditcss{
-    padding-top: 31%;
     display: flex;
-    justify-content: center;
+    justify-content:center;
+    padding-top: 80px;
   }
   .clrbtn{
-    color: yellow;
-    background-color: black;
+    background-color: #0f81c5;
+    color: white;
+
   }
+
+  .djkjkf{
+    position: relative;
+  }
+  .fgtre{
+    padding-top: 10px;
+    position: absolute;
+    right: 13px;
+}
+.hjdhfdjf{
+  padding-top: 80px;
+  display: flex;
+  width: 90%;
+}
+.yuyu{
+   width: 100%;
+   padding-left: 19px;
+}
+.wyuerh {
+border-radius: 21px;
+height: 39px;
+border: 1px solid;
+outline: none;
+width:50%;
+padding-left: 17px;
+}
+/* //////////////////////////  table css  ////////////////////// */
+
+   
+#deatils td,
+#deatils th {
+    /* border: 1px solid #ddd; */
+    border-bottom:1px solid #0000003d ;
+    padding: 8px;
+}
+
+
+/* #deatils tr:hover {
+    background-color:  rgba(94, 92, 92, 0);
+} */
+
+#deatils th {
+    color: white;
+}
+
+
+tbody {
+    overflow: auto;
+}
+
+thead,
+tbody tr {
+    width: 100%;
+    table-layout: fixed;
+}
+
+
+.tb-row{
+    /* background-color: red; */
+    border-bottom:1px solid #0000003d ;
+    height: 63px;
+}

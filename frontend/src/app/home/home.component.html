@@ -5,6 +5,39 @@
 </div>
 </mat-toolbar>
 
-<div class="auditcss" *ngIf="userinfo?.userrole === 'audit'">
-<button class="clrbtn" small mat-raised-button type="button" (click)="gotoAudit()">view Audit</button>
+
+<div class="hjdhfdjf"  >
+    <span class="yuyu">
+        <span class="djkjkf">
+          <input (keydown)="_handleKeydown($event)" class="wyuerh" type="search" placeholder="Search Content" name="wrkspcsearch" [(ngModel)]="wrkspcsearch">
+        <img height="21px" width="18px" src="assets/search.png" class="fgtre">
+        </span>
+    </span>
+
+<span>   
+     <button class="clrbtn" small mat-raised-button type="button" (click)="gotoAudit()">Create Task</button>
+</span>
+</div>
+
+<div>
+    <mat-horizontal-stepper [linear]="isLinear" #stepper>
+        <mat-step [stepControl]="firstFormGroup">
+          <form [formGroup]="firstFormGroup">
+            <ng-template matStepLabel>My Tasks</ng-template>
+           
+          </form>
+        </mat-step>
+        <mat-step [stepControl]="secondFormGroup">
+          <form [formGroup]="secondFormGroup">
+            <ng-template matStepLabel>All Tasks</ng-template>
+          
+          </form>
+        </mat-step>
+        <mat-step [stepControl]="thirdFormGroup">
+            <form [formGroup]="thirdFormGroup">
+              <ng-template matStepLabel>Expired Tasks</ng-template>
+            
+            </form>
+          </mat-step>
+      </mat-horizontal-stepper>
 </div>
