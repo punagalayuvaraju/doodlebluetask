@@ -7,5 +7,6 @@ module.exports = {
   mongo: {
 uri: 'mongodb+srv://yuvi:yuvi@cluster0-3zndo.gcp.mongodb.net/doodle?retryWrites=true&w=majority'
 },
+backendurl: 'http://localhost:9000',
   seedDB: false
 };

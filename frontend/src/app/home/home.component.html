@@ -21,22 +21,161 @@
 
 <div>
     <mat-horizontal-stepper [linear]="isLinear" #stepper>
-        <mat-step [stepControl]="firstFormGroup">
-          <form [formGroup]="firstFormGroup">
+        <mat-step >
+          <form >
             <ng-template matStepLabel>My Tasks</ng-template>
            
+            <div>
+
+              <mat-card class="wfrwewe" *ngIf="(usersTasks | filter : wrkspcsearch : ['Tname']:'Tname')?.length">
+                  <div class="row" style="width: -webkit-fill-available;height: 97%;">
+                     <table   class="trhythyt">
+                         <thead>
+                         <tr class="tb-row">
+                             <th class="nbnhn"><span class="fntSyl">Task Name</span></th>
+                             <th class="nbnhn"><span class="fntSyl">Created At</span></th>
+                             <th class="nbnhn"><span class="fntSyl">Created By</span></th>
+                             <th class="nbnhn"><span class="fntSyl">Status</span></th>
+                             <th class="nbnhn"><span class="fntSyl">Actions</span></th>
+                         </tr>
+                         </thead>
+                     <tbody id="deatils">
+                         <tr  class="tb-row hovera" *ngFor="let i of usersTasks | filter : wrkspcsearch : ['Tname']:'Tname'">
+                             <td class="aligncells">{{i?.Tname ? i?.Tname : '---'}}</td>
+                             <td class="aligncells">{{i?.createdAt ? i?.createdAt : '---'}}</td>
+                             <td class="aligncells">{{i?.created_By?.firstname ? i?.created_By.firstname : '---'}}</td>
+                             <td class="aligncells">{{i?.status ? i?.status : '---'}}</td>
+                             <td [matMenuTriggerFor]="menu"  class="aligncells fkdfd"><mat-icon>assignment</mat-icon></td>
+                              <mat-menu #menu="matMenu">
+                                <button *ngIf="i?.status === 'Pending' && i?.status !== 'Completed'" (click)="openupdation(i,'update')" mat-menu-item>
+                                  <mat-icon>build</mat-icon>
+                                  <span>Update</span>
+                                </button>
+                                <button *ngIf="i?.status === 'Pending' || i?.status === 'Completed'" (click)="openupdation(i,'delete')" mat-menu-item >
+                                  <mat-icon>delete_forever</mat-icon>
+                                  <span>Delete</span>
+                                </button>
+                                </mat-menu>
+                            </tr>
+         
+                     </tbody>
+                     </table>
+                    
+                 </div>
+         
+                
+                 </mat-card>
+      
+                 <mat-card class="wfrwewe" *ngIf="!usersTasks?.length"> 
+                
+                  <img style="padding-top: 77px;width: inherit;height:inherit;" src="assets/no-data-to-show.png">
+        
+                </mat-card>
+      
+                 <mat-card class="wfrwewe" *ngIf="!(usersTasks | filter : wrkspcsearch : ['Tname']:'Tname')?.length && usersTasks && usersTasks.length"> 
+                
+                  <div class="fgyrtht">
+                      <img height="60%" width="60%" class="iyuiuu" src="assets\no-data-to-show.png">
+                  </div>
+              </mat-card>
+          </div>
+
           </form>
         </mat-step>
-        <mat-step [stepControl]="secondFormGroup">
-          <form [formGroup]="secondFormGroup">
+        <mat-step >
+          <form >
             <ng-template matStepLabel>All Tasks</ng-template>
           
+            <div>
+
+              <mat-card class="wfrwewe" *ngIf="(AllTasks | filter : wrkspcsearch : ['Tname']:'Tname')?.length">
+                  <div class="row" style="width: -webkit-fill-available;height: 97%;">
+                     <table   class="trhythyt">
+                         <thead>
+                         <tr class="tb-row">
+                             <th class="nbnhn"><span class="fntSyl">Task Name</span></th>
+                             <th class="nbnhn"><span class="fntSyl">Created At</span></th>
+                             <th class="nbnhn"><span class="fntSyl">Created By</span></th>
+                             <th class="nbnhn"><span class="fntSyl">Status</span></th>
+                         </tr>
+                         </thead>
+                     <tbody id="deatils">
+                         <tr  class="tb-row hovera" *ngFor="let i of AllTasks | filter : wrkspcsearch : ['Tname']:'Tname'">
+                             <td class="aligncells">{{i?.Tname ? i?.Tname : '---'}}</td>
+                             <td class="aligncells">{{i?.createdAt ? i?.createdAt : '---'}}</td>
+                             <td class="aligncells">{{i?.created_By?.firstname ? i?.created_By.firstname : '---'}}</td>
+                             <td class="aligncells">{{i?.status ? i?.status : '---'}}</td>
+      
+                         </tr>
+         
+                     </tbody>
+                     </table>
+                 </div>
+         
+                
+                 </mat-card>
+      
+                 <mat-card class="wfrwewe" *ngIf="!AllTasks?.length"> 
+                
+                  <img style="padding-top: 77px;width: inherit;height:inherit;" src="assets/no-data-to-show.png">
+        
+                </mat-card>
+      
+                 <mat-card class="wfrwewe" *ngIf="!(AllTasks | filter : wrkspcsearch : ['Tname']:'Tname')?.length && AllTasks && AllTasks.length"> 
+                
+                  <div class="fgyrtht">
+                      <img height="60%" width="60%" class="iyuiuu" src="assets\no-data-to-show.png">
+                  </div>
+              </mat-card>
+          </div>
           </form>
         </mat-step>
-        <mat-step [stepControl]="thirdFormGroup">
-            <form [formGroup]="thirdFormGroup">
+        <mat-step >
+            <form >
               <ng-template matStepLabel>Expired Tasks</ng-template>
             
+              <div>
+
+                <mat-card class="wfrwewe" *ngIf="(expiryusers | filter : wrkspcsearch : ['Tname']:'Tname')?.length">
+                    <div class="row" style="width: -webkit-fill-available;height: 97%;">
+                       <table   class="trhythyt">
+                           <thead>
+                           <tr class="tb-row">
+                               <th class="nbnhn"><span class="fntSyl">Task Name</span></th>
+                               <th class="nbnhn"><span class="fntSyl">Created At</span></th>
+                               <th class="nbnhn"><span class="fntSyl">Created By</span></th>
+                               <th class="nbnhn"><span class="fntSyl">Status</span></th>
+                           </tr>
+                           </thead>
+                       <tbody id="deatils">
+                           <tr  class="tb-row hovera" *ngFor="let i of expiryusers | filter : wrkspcsearch : ['Tname']:'Tname'">
+                               <td class="aligncells">{{i?.Tname ? i?.Tname : '---'}}</td>
+                               <td class="aligncells">{{i?.createdAt ? i?.createdAt : '---'}}</td>
+                               <td class="aligncells">{{i?.created_By?.firstname ? i?.created_By.firstname : '---'}}</td>
+                               <td class="aligncells">{{i?.status ? i?.status : '---'}}</td>
+        
+                           </tr>
+           
+                       </tbody>
+                       </table>
+                   </div>
+           
+                  
+                   </mat-card>
+        
+                   <mat-card class="wfrwewe" *ngIf="!expiryusers?.length"> 
+                  
+                    <img style="padding-top: 77px;width: inherit;height:inherit;" src="assets/no-data-to-show.png">
+          
+                  </mat-card>
+        
+                   <mat-card class="wfrwewe" *ngIf="!(expiryusers | filter : wrkspcsearch : ['Tname']:'Tname')?.length && expiryusers && expiryusers.length"> 
+                  
+                    <div class="fgyrtht">
+                        <img height="60%" width="60%" class="iyuiuu" src="assets\no-data-to-show.png">
+                    </div>
+                </mat-card>
+            </div>
             </form>
           </mat-step>
       </mat-horizontal-stepper>

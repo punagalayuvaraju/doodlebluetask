@@ -16,8 +16,8 @@ function onConnect(socket) {
   socket.on('info', function (data) {
     console.info('[%s] %s', socket.address, JSON.stringify(data, null, 2));
   });
-  socket.on('chat:save', function (data) {
-    socket.broadcast.emit('chat:save', data);
+  socket.on('task:save', function (data) {
+    socket.broadcast.emit('task:save', data);
   });
 }
 

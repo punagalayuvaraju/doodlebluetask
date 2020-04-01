@@ -3,7 +3,8 @@
             <div class="hyhd">
                 <button [mat-dialog-close]="'Yes'"  mat-icon-button type="button"><mat-icon>highlight_off</mat-icon></button>
             </div>
-             <div>  
+           
+            <div>  
             <mat-form-field class="widthformfield">
                 <input type="text" matInput placeholder="Task Name" formControlName="Tname" (keydown)="_handleKeydown($event)">
                <mat-error *ngIf="formControls?.Tname?.errors">
@@ -16,6 +17,22 @@
                </mat-error>
               </mat-form-field>
             </div>
+
+            <div>
+                <mat-form-field class="widthformfield">
+                    <input matInput readonly placeholder="Expiry date" (keypress)="false" autocomplete="off" [matDatepicker]="picker" [min]="todayDate"
+                      (click)="picker.open()" formControlName="expires_At">
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+            
+                    <mat-error *ngIf="formControls?.expires_At?.errors">
+                        <span *ngIf="formControls?.expires_At?.errors?.required">
+                        Date is Required !!!
+                        </span>
+                      </mat-error>
+                  </mat-form-field>
+            
+            </div>
         
         
             <div class="cnttr">
@@ -23,4 +40,47 @@
             </div>
         </form>      
         
+</ng-container>
+
+
+<ng-container *ngIf="dialogdata?.type === 'update'">
+    <form [formGroup]="updateForm" (ngSubmit)="updateRecord($event)">
+        <div class="hyhd">
+            <button [mat-dialog-close]="'Yes'"  mat-icon-button type="button"><mat-icon>highlight_off</mat-icon></button>
+        </div>
+
+        <div>
+            <mat-form-field>
+                <mat-label>Select Status</mat-label>
+                <mat-select formControlName="status">
+                  <mat-option *ngFor="let i of statusvalues" [value]="i">
+                    {{i}}
+                  </mat-option>
+                </mat-select>
+                <mat-error *ngIf="formControls1?.status?.errors">
+                    <span *ngIf="formControls1?.status?.errors?.required">
+                    Date is Required !!!
+                    </span>
+                  </mat-error>
+              </mat-form-field>
+        </div>
+
+        <div class="cnttr">
+            <button type="submit" class="grnclr" mat-raised-button>update</button>
+        </div>
+    </form>
+</ng-container>
+
+
+<ng-container *ngIf="dialogdata?.type === 'delete'">
+        <div class="hyhd">
+            <button [mat-dialog-close]="'Yes'"  mat-icon-button type="button"><mat-icon>highlight_off</mat-icon></button>
+        </div>
+        <div class="cnttr">
+            <b>Are Sure Want to Delete ???</b>
+        </div>
+        <div class="dfsdfdfd">
+            <button type="button" (click)="deleteRecord()" class="grnclr" mat-raised-button>Yes</button>
+            <button type="button" [mat-dialog-close]="'Yes'" class="redclr" mat-raised-button>No</button>
+        </div>
 </ng-container>

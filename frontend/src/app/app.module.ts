@@ -21,17 +21,19 @@ import {MatInputModule} from '@angular/material/input' ;
 import {MatButtonModule} from '@angular/material/button';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatIconModule} from '@angular/material/icon';
+import {MatSelectModule} from '@angular/material/select'
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import {FilterPipe} from './filter.pipe';
 import { DialogComponent } from './dialog/dialog.component'
 import {MatDialogModule} from '@angular/material/dialog'
-
+import {MatDatepickerModule} from '@angular/material/datepicker'
+import { MatNativeDateModule } from '@angular/material/core';
+import {MatMenuModule} from '@angular/material/menu'
 const routes : Routes = [
   {path:'',component :LoginComponent},
   {path:'home',component :HomeComponent,canActivate:[AuthGuard]},
   {path:'signup',component:SignupComponent}
-
 ]
 
 
@@ -52,10 +54,14 @@ const routes : Routes = [
     BrowserAnimationsModule,
     MatFormFieldModule,
     MatInputModule,
+    MatDatepickerModule,
     FormsModule,
     MatIconModule,
     MatToolbarModule,
+    MatNativeDateModule,
+    MatMenuModule,
     MatDialogModule,
+    MatSelectModule,
     NgxSpinnerModule,
     MatButtonModule,
     MatTooltipModule,

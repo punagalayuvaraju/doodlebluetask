@@ -36,7 +36,7 @@ exports.create = function (req, res, next) {
        }  
     } else {
       var token = jwt.sign({_id: response._id }, config.secrets.session, { expiresInMinutes: 60*5 });
-      res.status(200).json({ token: token ,userrole: response.role,firstname:response.firstname});
+      res.status(200).json({ token: token ,userrole: response.role,firstname:response.firstname,username:response.username});
     }
   });
   };

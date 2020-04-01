@@ -82,3 +82,14 @@ tbody tr {
     border-bottom:1px solid #0000003d ;
     height: 63px;
 }
+
+.aligncells{
+  text-align: center;
+}
+.fkdfd{
+  cursor: pointer;
+}
+
+.trhythyt{
+  width:inherit;
+}

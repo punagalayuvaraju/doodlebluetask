@@ -11,3 +11,16 @@
     display: flex;
     float: right;
   }
+  .dfsdfdfd{
+    display: flex;
+    justify-content: space-evenly;
+  }
+  
+  .redclr{
+background-color: red;
+color: white;
+  }
+  .grnclr{
+      background-color: green;
+      color: white;
+  }
