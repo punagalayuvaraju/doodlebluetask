@@ -6,12 +6,14 @@ var socketio=require('socket.io-client')(config.backendurl)
 
 // Get list of tasks
 exports.index = function(req, res) {
-   var query1 = {$or:[{status: 'Completed'},{$and:[{status: 'Pending'},{expires_At :{ $gte : new Date()}}]}]};
-  Task.find(query1,{status:true,Tname:true,createdAt:true}).populate('created_By',{_id:0,firstname:1}).exec(function (err, tasks) {
+
+  var query1 = {$or:[{status: 'Completed'},{$and:[{status: 'Pending'},{expires_At :{ $gte : new Date()}}]}]};
+
+  Task.find(query1,{status:true,Tname:true,createdAt:true}).populate('created_By',{_id:0,firstname:1})
+  .exec(function (err, tasks) {
     if(err) { 
       return res.status(400).send({message: 'Something Went Wrong While Getting All Tasks'}) 
-    }
-    else{
+    } else{
       return res.status(200).json(tasks);
     }
   });
@@ -19,23 +21,16 @@ exports.index = function(req, res) {
 
 
 
-// Get a single task
-exports.show = function(req, res) {
-  Task.findById(req.params.id,{status:true,Tname:true,createdAt:true}).populate('created_By',{_id:0,firstname:1}).exec(function (err, task) {
-    if(err) { return handleError(res, err); }
-    if(!task) { return res.status(404).send('Not Found'); }
-    return res.json(task);
-  });
-};
-
 // get list of user task
 exports.userTasks = function(req,res) {
-  console.log(req.params.id)
+ 
   if (req.params.id === 'userslist') {
-  var query = {$or:[{$and:[{status: 'Completed'},{created_By : req.user._id}]},{$and:[{status: 'Pending'},{created_By : req.user._id},{expires_At :{ $gte : new Date()}}]}]};
-  } else if(req.params.id === 'expirylist') {
-  var query = {$and:[{status:'Pending'},{created_By : req.user._id},{expires_At :{ $lte : new Date()}}]}
-  }
+  var query = {$or:[{$and:[{status: 'Completed'},{created_By : req.user._id}]},{$and:[{status: 'Pending'},
+  {created_By : req.user._id},{expires_At :{ $gte : new Date()}}]}]};} 
+  
+  else if (req.params.id === 'expirylist') {
+  var query = {$and:[{status:'Pending'},{created_By : req.user._id},{expires_At :{ $lte : new Date()}}]}}
+
   Task.find(query,{status:true,Tname:true,createdAt:true}).populate('created_By',{_id:1,firstname:1}).exec(function(err, tasks) {
     if (err) {
       console.log(err);
@@ -48,7 +43,7 @@ exports.userTasks = function(req,res) {
 
 // Creates a new task in the DB.
 exports.create = function(req, res) {
-  req.body.created_By = req.user._id;
+req.body.created_By = req.user._id;
 var newTask = new Task(req.body);
 newTask.save(function(err,response) {
   if(err) {

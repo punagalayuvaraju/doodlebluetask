@@ -14,9 +14,14 @@ export class SignupComponent implements OnInit {
   registerForm:FormGroup;
   passwordtype = 'password'; // ---------------It is declared for initial condition for show password value---------------//
   showPass = false; // ---------------used for onclick change show password---------------//
+  
+  
   constructor(private formbuilder: FormBuilder, private usersrvc: UserService,private router:Router
     ,private spinner:NgxSpinnerService, private toast:ToastrService) { }
 
+  /**
+   *  used for initializing the child modules
+   */
   ngOnInit(): void {
     this.registerForm = this.formbuilder.group({
       firstname: [null,Validators.compose([Validators.required,Validators.pattern(/[a-z A-Z]{3,45}/)])],
@@ -26,8 +31,14 @@ export class SignupComponent implements OnInit {
     });
   }
 
+  /**
+   *  used for form validation purpose
+   */
   get formControls() { return this.registerForm.controls; }
 
+  /**
+   *  used for registration of new User
+   */
   registerUser(event) {
     const userip = JSON.parse(localStorage.getItem('SmartIp'));
     this.registerForm.value.userIP = userip.ip;
@@ -51,6 +62,10 @@ export class SignupComponent implements OnInit {
     }
   }
 
+
+  /**
+   *  used to handle white spaces 
+   */
   _handleKeydown(event) {
     if (event.keyCode === 32) {
       event.stopPropagation();

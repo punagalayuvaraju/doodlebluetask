@@ -14,10 +14,14 @@ export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   passwordtype = 'password'; // ---------------It is declared for initial condition for show password value---------------//
   showPass = false; // ---------------used for onclick change show password---------------//
+ 
+ 
   constructor(private formbuilder: FormBuilder, private usersrvc: UserService,private router:Router
-    ,private spinner:NgxSpinnerService, private toast:ToastrService) { }
+  ,private spinner:NgxSpinnerService, private toast:ToastrService) { }
 
-
+  /**
+   *  used for initializing child modules
+   */
   ngOnInit() {
    this.loginForm = this.formbuilder.group({
     username: [null,Validators.compose([Validators.required,Validators.pattern(/[a-z A-Z]{3,45}/)])],
@@ -25,10 +29,15 @@ export class LoginComponent implements OnInit {
    })
   }
 
+   /**
+   *  used for form validations
+   */
   get formControls() { return this.loginForm.controls; }
 
+  /**
+   *  used for checking the login credentials
+   */
   loginUser(event) {
-
   if(this.loginForm.valid) {
     event.stopPropagation();
     this.spinner.show();
@@ -47,7 +56,9 @@ export class LoginComponent implements OnInit {
   }
   }
 
-
+  /**
+   *  used to prevent white spaces for the first letter
+   */
   _handleKeydown(event) {
     if (event.keyCode === 32) {
       event.stopPropagation();

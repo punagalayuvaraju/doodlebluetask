@@ -1,6 +1,6 @@
 <mat-toolbar  class="position-fixed">
 <div class="dvwdth">
-    <span>Dashboard >> {{userinfo?.firstname}}</span>
+    <span> {{userinfo?.firstname}}</span>
     <span (click)="logout($event)" class="icnend"><mat-icon>input</mat-icon></span>
 </div>
 </mat-toolbar>
@@ -15,7 +15,7 @@
     </span>
 
 <span>   
-     <button class="clrbtn" small mat-raised-button type="button" (click)="gotoAudit()">Create Task</button>
+     <button class="clrbtn" small mat-raised-button type="button" (click)="createTaskList()">Create Task</button>
 </span>
 </div>
 

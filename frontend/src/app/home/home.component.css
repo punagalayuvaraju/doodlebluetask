@@ -2,6 +2,7 @@
     position: fixed;
     background-color: #0f81c5;
     color: white;
+    z-index: 99;
   }
   .dvwdth{
     width:100%;

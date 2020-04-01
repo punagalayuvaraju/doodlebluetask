@@ -28,20 +28,28 @@ export class UserService {
       return token;
     }
 
+    // user login authentication
     userLogin(loginData) { return this.http.post(this.serverurl + '/auth/local', loginData); }
 
+    // user logout related
     logout() { localStorage.removeItem('currentUser');this.router.navigate(['']); }
     
+    // New user registeration
     createUser(user) {return this.http.post(this.serverurl + '/api/users/', user);}
 
+    // New task creation
     createTask(task) {return this.http.post(this.serverurl + '/api/tasks/', task); }
 
+    // get all the tasks of all the users
     getAllTasks() {return this.http.get(this.serverurl + '/api/tasks/'); }
 
+    // get logged in user tasks && logged in user Expired tasks
     getUserTasks(type) {return this.http.get(this.serverurl + '/api/tasks/usertasks/' + type); }
    
+    // Delete the task of logged in user
     deleteTask(task) {return this.http.delete(this.serverurl + '/api/tasks/'+ task)}
     
+    // this is used to update the task status
     updateTask(task) {return this.http.post(this.serverurl + '/api/tasks/taskUpdate',task)}
 
 // socket configuration //////////////////////////////////////

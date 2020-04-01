@@ -16,6 +16,8 @@ export class DialogComponent implements OnInit {
   userinfo:any;
   todayDate = new Date(); // today date as minimum value for expiry date
   statusvalues= ['Pending','Completed'];
+  
+  
   constructor(public userservc:UserService,private spinner:NgxSpinnerService,
     private router:Router,
     @Optional() public dialogRef: MatDialogRef<DialogComponent>,
@@ -24,7 +26,10 @@ export class DialogComponent implements OnInit {
     public formbuilder: FormBuilder
     ) { }
 
-  ngOnInit() {
+  /**
+   *  initially to load child modules
+   */
+    ngOnInit() {
     this.creationForm = this.formbuilder.group({
       Tname:[null,Validators.compose([Validators.required])],
       expires_At:[null,Validators.compose([Validators.required])]
@@ -39,10 +44,16 @@ export class DialogComponent implements OnInit {
     this.userinfo = JSON.parse(localStorage.getItem('currentUser'));
   }
 
+ /**
+   * used for form Validations  
+   */
   get formControls() { return this.creationForm.controls; }
   get formControls1() { return this.updateForm.controls; }
 
 
+  /**
+   *  used for creation of new task
+   */
 
   creationrecord() {
    if (this.creationForm.valid) {
@@ -65,6 +76,10 @@ export class DialogComponent implements OnInit {
    }
   }
 
+  /**
+   *  used to handle white spaces in starting
+   */
+
   _handleKeydown(event) {
     if (event.keyCode === 32) {
       event.stopPropagation();
@@ -74,6 +89,10 @@ export class DialogComponent implements OnInit {
     }
 
   }
+
+  /**
+   *  used to delete the task record
+   */
 
   deleteRecord() {
    this .spinner.show();
@@ -91,6 +110,9 @@ export class DialogComponent implements OnInit {
     })
   }
 
+  /**
+   *  used to update the task record status
+   */
 
   updateRecord(event) {
     event.stopPropagation();
