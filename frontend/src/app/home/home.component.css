@@ -22,7 +22,7 @@
 
   }
 
-  .djkjkf{
+  .PosnRelat{
     position: relative;
   }
   .fgtre{
@@ -30,16 +30,16 @@
     position: absolute;
     right: 13px;
 }
-.hjdhfdjf{
+.alignAndWidth{
   padding-top: 80px;
   display: flex;
   width: 90%;
 }
-.yuyu{
+.padLftAndWidth{
    width: 100%;
    padding-left: 19px;
 }
-.wyuerh {
+.overallCssChng {
 border-radius: 21px;
 height: 39px;
 border: 1px solid;
@@ -91,6 +91,6 @@ tbody tr {
   cursor: pointer;
 }
 
-.trhythyt{
+.adjustSpecific{
   width:inherit;
 }

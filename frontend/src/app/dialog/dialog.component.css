@@ -2,16 +2,16 @@
     background-color: #0f81c5;
     color: white;
   }
-  .cnttr{
+  .aligncentr{
   display: flex;
   justify-content: center;
   }
   
-  .hyhd{
+  .alignrigth{
     display: flex;
     float: right;
   }
-  .dfsdfdfd{
+  .alignSpaceEvenly{
     display: flex;
     justify-content: space-evenly;
   }

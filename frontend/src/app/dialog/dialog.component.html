@@ -1,6 +1,6 @@
 <ng-container *ngIf="dialogdata?.type === 'create'">
         <form [formGroup]="creationForm" (ngSubmit)="creationrecord()">
-            <div class="hyhd">
+            <div class="alignrigth">
                 <button [mat-dialog-close]="'Yes'"  mat-icon-button type="button"><mat-icon>highlight_off</mat-icon></button>
             </div>
            
@@ -35,7 +35,7 @@
             </div>
         
         
-            <div class="cnttr">
+            <div class="aligncentr">
              <button mat-raised-button class="btnclr" type="submit">Submit</button>
             </div>
         </form>      
@@ -45,7 +45,7 @@
 
 <ng-container *ngIf="dialogdata?.type === 'update'">
     <form [formGroup]="updateForm" (ngSubmit)="updateRecord($event)">
-        <div class="hyhd">
+        <div class="alignrigth">
             <button [mat-dialog-close]="'Yes'"  mat-icon-button type="button"><mat-icon>highlight_off</mat-icon></button>
         </div>
 
@@ -65,7 +65,7 @@
               </mat-form-field>
         </div>
 
-        <div class="cnttr">
+        <div class="aligncentr">
             <button type="submit" class="grnclr" mat-raised-button>update</button>
         </div>
     </form>
@@ -73,13 +73,13 @@
 
 
 <ng-container *ngIf="dialogdata?.type === 'delete'">
-        <div class="hyhd">
+        <div class="alignrigth">
             <button [mat-dialog-close]="'Yes'"  mat-icon-button type="button"><mat-icon>highlight_off</mat-icon></button>
         </div>
-        <div class="cnttr">
+        <div class="aligncentr">
             <b>Are Sure Want to Delete ???</b>
         </div>
-        <div class="dfsdfdfd">
+        <div class="alignSpaceEvenly">
             <button type="button" (click)="deleteRecord()" class="grnclr" mat-raised-button>Yes</button>
             <button type="button" [mat-dialog-close]="'Yes'" class="redclr" mat-raised-button>No</button>
         </div>

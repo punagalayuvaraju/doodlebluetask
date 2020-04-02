@@ -6,10 +6,10 @@
 </mat-toolbar>
 
 
-<div class="hjdhfdjf"  >
-    <span class="yuyu">
-        <span class="djkjkf">
-          <input (keydown)="_handleKeydown($event)" class="wyuerh" type="search" placeholder="Search Content" name="wrkspcsearch" [(ngModel)]="wrkspcsearch">
+<div class="alignAndWidth">
+    <span class="padLftAndWidth">
+        <span class="PosnRelat">
+          <input (keydown)="_handleKeydown($event)" class="overallCssChng" type="search" placeholder="Search Content" name="wrkspcsearch" [(ngModel)]="wrkspcsearch">
         <img height="21px" width="18px" src="assets/search.png" class="fgtre">
         </span>
     </span>
@@ -27,9 +27,9 @@
            
             <div>
 
-              <mat-card class="wfrwewe" *ngIf="(usersTasks | filter : wrkspcsearch : ['Tname']:'Tname')?.length">
+              <mat-card  *ngIf="(usersTasks | filter : wrkspcsearch : ['Tname']:'Tname')?.length">
                   <div class="row" style="width: -webkit-fill-available;height: 97%;">
-                     <table   class="trhythyt">
+                     <table   class="adjustSpecific">
                          <thead>
                          <tr class="tb-row">
                              <th class="nbnhn"><span class="fntSyl">Task Name</span></th>
@@ -66,16 +66,16 @@
                 
                  </mat-card>
       
-                 <mat-card class="wfrwewe" *ngIf="!usersTasks?.length"> 
+                 <mat-card  *ngIf="!usersTasks?.length"> 
                 
                   <img style="padding-top: 77px;width: inherit;height:inherit;" src="assets/no-data-to-show.png">
         
                 </mat-card>
       
-                 <mat-card class="wfrwewe" *ngIf="!(usersTasks | filter : wrkspcsearch : ['Tname']:'Tname')?.length && usersTasks && usersTasks.length"> 
+                 <mat-card  *ngIf="!(usersTasks | filter : wrkspcsearch : ['Tname']:'Tname')?.length && usersTasks && usersTasks.length"> 
                 
                   <div class="fgyrtht">
-                      <img height="60%" width="60%" class="iyuiuu" src="assets\noresults.png">
+                      <img height="60%" width="60%"  src="assets\noresults.png">
                   </div>
               </mat-card>
           </div>
@@ -88,9 +88,9 @@
           
             <div>
 
-              <mat-card class="wfrwewe" *ngIf="(AllTasks | filter : wrkspcsearch : ['Tname']:'Tname')?.length">
+              <mat-card  *ngIf="(AllTasks | filter : wrkspcsearch : ['Tname']:'Tname')?.length">
                   <div class="row" style="width: -webkit-fill-available;height: 97%;">
-                     <table   class="trhythyt">
+                     <table   class="adjustSpecific">
                          <thead>
                          <tr class="tb-row">
                              <th class="nbnhn"><span class="fntSyl">Task Name</span></th>
@@ -115,16 +115,16 @@
                 
                  </mat-card>
       
-                 <mat-card class="wfrwewe" *ngIf="!AllTasks?.length"> 
+                 <mat-card  *ngIf="!AllTasks?.length"> 
                 
                   <img style="padding-top: 77px;width: inherit;height:inherit;" src="assets/no-data-to-show.png">
         
                 </mat-card>
       
-                 <mat-card class="wfrwewe" *ngIf="!(AllTasks | filter : wrkspcsearch : ['Tname']:'Tname')?.length && AllTasks && AllTasks.length"> 
+                 <mat-card  *ngIf="!(AllTasks | filter : wrkspcsearch : ['Tname']:'Tname')?.length && AllTasks && AllTasks.length"> 
                 
                   <div class="fgyrtht">
-                      <img height="60%" width="60%" class="iyuiuu" src="assets\noresults.png">
+                      <img height="60%" width="60%"  src="assets\noresults.png">
                   </div>
               </mat-card>
           </div>
@@ -136,9 +136,9 @@
             
               <div>
 
-                <mat-card class="wfrwewe" *ngIf="(expiryusers | filter : wrkspcsearch : ['Tname']:'Tname')?.length">
+                <mat-card  *ngIf="(expiryusers | filter : wrkspcsearch : ['Tname']:'Tname')?.length">
                     <div class="row" style="width: -webkit-fill-available;height: 97%;">
-                       <table   class="trhythyt">
+                       <table   class="adjustSpecific">
                            <thead>
                            <tr class="tb-row">
                                <th class="nbnhn"><span class="fntSyl">Task Name</span></th>
@@ -163,16 +163,16 @@
                   
                    </mat-card>
         
-                   <mat-card class="wfrwewe" *ngIf="!expiryusers?.length"> 
+                   <mat-card  *ngIf="!expiryusers?.length"> 
                   
                     <img style="padding-top: 77px;width: inherit;height:inherit;" src="assets/no-data-to-show.png">
           
                   </mat-card>
         
-                   <mat-card class="wfrwewe" *ngIf="!(expiryusers | filter : wrkspcsearch : ['Tname']:'Tname')?.length && expiryusers && expiryusers.length"> 
+                   <mat-card  *ngIf="!(expiryusers | filter : wrkspcsearch : ['Tname']:'Tname')?.length && expiryusers && expiryusers.length"> 
                   
-                    <div class="fgyrtht">
-                        <img height="60%" width="60%" class="iyuiuu" src="assets\noresults.png">
+                    <div >
+                        <img height="60%" width="60%"  src="assets\noresults.png">
                     </div>
                 </mat-card>
             </div>
