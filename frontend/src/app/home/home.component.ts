@@ -58,6 +58,11 @@ export class HomeComponent implements OnInit {
    */
   logout(event) {
     event.stopPropagation();
+    const obj = {
+      type:'disconnect',      
+      username:this.userinfo.username
+    }
+    this.userservc.Connectsocket(obj);
     this.userservc.logout();
   }
 

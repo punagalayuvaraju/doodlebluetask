@@ -32,7 +32,10 @@ export class UserService {
     userLogin(loginData) { return this.http.post(this.serverurl + '/auth/local', loginData); }
 
     // user logout related
-    logout() { localStorage.removeItem('currentUser');this.router.navigate(['']); }
+    logout() { 
+      localStorage.removeItem('currentUser');
+      this.router.navigate(['']); 
+     }
     
     // New user registeration
     createUser(user) {return this.http.post(this.serverurl + '/api/users/', user);}
@@ -71,7 +74,7 @@ export class UserService {
         this.socketio.emit('info', type.username);
       }
       if (type.type === 'disconnect') {
-        this.socketio.emit('onDisconnect', '');
+        this.socketio.emit('onDisconnect','');
       }
       return this.createObservable();
     }

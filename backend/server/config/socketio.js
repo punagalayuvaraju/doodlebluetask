@@ -8,14 +8,20 @@ var config = require('./environment');
 
 // When the user disconnects.. perform this
 function onDisconnect(socket) {
+  console.log("Disconnection process$$$$$$$")
+  socket.disconnect();
 }
-
 // When the user connects.. perform this
 function onConnect(socket) {
   // When the client emits 'info', this listens and executes
   socket.on('info', function (data) {
     console.info('[%s] %s', socket.address, JSON.stringify(data, null, 2));
   });
+
+  socket.on('onDisconnect', function (data) {
+    socket.disconnect();
+  });
+  
   socket.on('task:save', function (data) {
     socket.broadcast.emit('task:save', data);
   });
